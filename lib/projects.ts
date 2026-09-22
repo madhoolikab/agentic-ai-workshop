@@ -51,7 +51,7 @@ export const projects: Project[] = [
     domain: "Travel",
     name: "Autonomous Trip Planner Agent",
     workflow:
-      "Receives travel preferences → finds transport and stays → builds itinerary → checks budget and constraints → monitors changes → replans when needed",
+      "Takes travel preferences → finds transport and stays → builds itinerary → checks budget and constraints → monitors changes → replans when needed",
     color: "#1f6f6b",
     icon: "✈️",
   },
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     domain: "Content Creation",
     name: "Instagram Content Creator Agent",
     workflow:
-      "Receives content goal/topic → researches trends and audience interests → generates content ideas → creates script/caption → prepares visual/thumbnail brief → schedules publishing → analyzes performance → improves future content based on engagement",
+      "Receives content topic → researches trends → generates ideas → creates script → prepares visual brief → schedules publishing",
     color: "#8a5a1f",
     icon: "📱",
   },

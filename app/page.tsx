@@ -180,7 +180,7 @@ export default function ProjectsPage() {
                   </span>
                   <h3>{project.name}</h3>
                 </div>
-                <p>{project.workflow}</p>
+                <p>{project.prompt}</p>
 
                 {members.length > 0 ? (
                   <button

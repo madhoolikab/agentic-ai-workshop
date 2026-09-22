@@ -360,6 +360,8 @@ form.claim-form {
   display: grid;
   gap: 14px;
   max-width: 480px;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 form.claim-form label {
@@ -367,10 +369,14 @@ form.claim-form label {
   color: var(--text-muted);
   display: grid;
   gap: 6px;
+  min-width: 0;
 }
 
 form.claim-form input,
 form.claim-form select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   background: #0e1330;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -380,6 +386,8 @@ form.claim-form select {
 }
 
 form.claim-form button {
+  width: 100%;
+  box-sizing: border-box;
   background: var(--accent-gradient);
   border: none;
   border-radius: 8px;

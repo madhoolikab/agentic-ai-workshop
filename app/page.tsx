@@ -111,7 +111,7 @@ export default function ProjectsPage() {
       <h1 className="page-title">Workshop Projects</h1>
       <p className="page-subtitle">
         Six agentic AI systems to build during the workshop. Join any one project based on your
-        interest — each team fills up at {TEAM_CAPACITY} members, first come first served.
+        interest. Each team fills up at {TEAM_CAPACITY} members, first come first served.
       </p>
 
       <div className="join-panel">
@@ -163,90 +163,87 @@ export default function ProjectsPage() {
           const isExpanded = !!expanded[project.id];
 
           return (
-            <div className="card" key={project.id}>
-              <span className="badge">{project.domain}</span>
-              <h3>{project.name}</h3>
-              <p>{project.workflow}</p>
+            <div className="card" key={project.id} style={{ "--dom": project.color } as React.CSSProperties}>
+              <div className="card-strip">
+                <span className="badge">{project.domain}</span>
+                <div className="dots" aria-hidden="true">
+                  {Array.from({ length: TEAM_CAPACITY }, (_, i) => (
+                    <span key={i} className={`dot${i < members.length ? " filled" : ""}`} />
+                  ))}
+                </div>
+              </div>
 
-              {members.length > 0 ? (
-                <button
-                  type="button"
-                  className="card-tap-area"
-                  aria-expanded={isExpanded}
-                  onClick={() =>
-                    setExpanded((exp) => ({ ...exp, [project.id]: !exp[project.id] }))
-                  }
-                >
-                  <div className="card-status">
-                    {isFull ? (
-                      <span className="status-taken">
-                        <strong>Full</strong> ({members.length}/{TEAM_CAPACITY})
+              <div className="card-body">
+                <h3>{project.name}</h3>
+                <p>{project.workflow}</p>
+
+                {members.length > 0 ? (
+                  <button
+                    type="button"
+                    className="card-tap-area"
+                    aria-expanded={isExpanded}
+                    onClick={() =>
+                      setExpanded((exp) => ({ ...exp, [project.id]: !exp[project.id] }))
+                    }
+                  >
+                    <div className="card-status">
+                      <span className={isFull ? "status-taken" : "status-open"}>
+                        {isFull ? "Full" : "Open"} · {members.length}/{TEAM_CAPACITY}
                       </span>
-                    ) : (
-                      <span className="status-open">
-                        Open — {members.length}/{TEAM_CAPACITY} joined
-                      </span>
-                    )}
-                    <svg
-                      className="chevron"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </div>
-                  <div className="avatar-row">
-                    {members.map((m) => (
-                      <span key={m.name} className="avatar" title={m.name}>
-                        {initials(m.name)}
-                      </span>
-                    ))}
-                  </div>
-                </button>
-              ) : (
-                <>
+                      <svg
+                        className="chevron"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </div>
+                    <div className="avatar-row">
+                      {members.map((m) => (
+                        <span key={m.name} className="avatar" title={m.name}>
+                          {initials(m.name)}
+                        </span>
+                      ))}
+                    </div>
+                  </button>
+                ) : (
                   <div className="card-status">
                     <span className="status-open">
-                      Open — {members.length}/{TEAM_CAPACITY} joined
+                      Open · {members.length}/{TEAM_CAPACITY}
                     </span>
                   </div>
-                  <div className="avatar-row">
-                    <span style={{ color: "var(--text-muted)" }}>
-                      {loading ? "Loading…" : "No one has joined yet."}
-                    </span>
-                  </div>
-                </>
-              )}
+                )}
 
-              {isExpanded && members.length > 0 && (
-                <ul className="member-list">
-                  {members.map((m) => {
-                    const mine = isMine(myJoins, project.id, m.name);
-                    return (
-                      <li key={m.name}>
-                        <span>{m.name}</span>
-                        {mine && (
-                          <button
-                            type="button"
-                            className="leave-btn"
-                            aria-label={`Remove ${m.name}`}
-                            onClick={() => handleLeave(project.id, m.name)}
-                          >
-                            ×
-                          </button>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
+                {isExpanded && members.length > 0 && (
+                  <ul className="member-list">
+                    {members.map((m) => {
+                      const mine = isMine(myJoins, project.id, m.name);
+                      return (
+                        <li key={m.name}>
+                          <span>{m.name}</span>
+                          {mine && (
+                            <button
+                              type="button"
+                              className="leave-btn"
+                              aria-label={`Remove ${m.name}`}
+                              onClick={() => handleLeave(project.id, m.name)}
+                            >
+                              ×
+                            </button>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
             </div>
           );
         })}

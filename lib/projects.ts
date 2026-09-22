@@ -5,6 +5,7 @@ export type Project = {
   domain: string;
   name: string;
   workflow: string;
+  color: string;
 };
 
 export const projects: Project[] = [
@@ -14,6 +15,7 @@ export const projects: Project[] = [
     name: "Placement Preparation Agent",
     workflow:
       "Reads resume → analyzes job requirements → identifies gaps → creates learning plan → conducts mock interviews → tracks improvement",
+    color: "#b5502f",
   },
   {
     id: "campus-issue-resolution",
@@ -21,6 +23,7 @@ export const projects: Project[] = [
     name: "Campus Issue Resolution Agentic System",
     workflow:
       "Receives complaints → categorizes them → assigns the right department → tracks resolution → escalates overdue issues",
+    color: "#3b4451",
   },
   {
     id: "farmer-decision-support",
@@ -28,6 +31,7 @@ export const projects: Project[] = [
     name: "Farmer Decision-Support Agent",
     workflow:
       "Uses weather/crop/soil information → plans activities → monitors conditions → alerts farmers → updates recommendations",
+    color: "#4d7358",
   },
   {
     id: "hospital-appointment-coordination",
@@ -35,6 +39,7 @@ export const projects: Project[] = [
     name: "Hospital Appointment Coordination Agent",
     workflow:
       "Finds department → checks doctor availability → schedules/reschedules → sends reminders → handles conflicts",
+    color: "#7a4a68",
   },
   {
     id: "autonomous-trip-planner",
@@ -42,6 +47,7 @@ export const projects: Project[] = [
     name: "Autonomous Trip Planner Agent",
     workflow:
       "Receives travel preferences → finds transport and stays → builds itinerary → checks budget and constraints → monitors changes → replans when needed",
+    color: "#1f6f6b",
   },
   {
     id: "content-creator-agent",
@@ -49,5 +55,6 @@ export const projects: Project[] = [
     name: "Instagram Content Creator Agent",
     workflow:
       "Receives content goal/topic → researches trends and audience interests → generates content ideas → creates script/caption → prepares visual/thumbnail brief → schedules publishing → analyzes performance → improves future content based on engagement",
+    color: "#8a5a1f",
   },
 ];

@@ -1,14 +1,16 @@
 :root {
-  --bg: #0b0f2b;
-  --bg-elevated: #141a3d;
-  --border: #2a3266;
-  --text: #f0f1fb;
-  --text-muted: #a8adcf;
-  --accent: #b968f5;
-  --accent-2: #4fc3f7;
-  --accent-gradient: linear-gradient(90deg, #4fc3f7, #b968f5, #ec4899);
-  --success: #34d399;
-  --danger: #f87171;
+  --bg: #ffffff;
+  --bg-elevated: #f9f9f8;
+  --bg-sunken: #f2f1ee;
+  --border: #e4e2de;
+  --text: #232323;
+  --text-muted: #75726c;
+  --accent: #d9694f;
+  --accent-2: #3b4451;
+  --accent-gradient: #d9694f;
+  --on-accent: #ffffff;
+  --success: #3f7d5c;
+  --danger: #c14a3a;
 }
 
 * {
@@ -39,7 +41,7 @@ a {
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  background: rgba(11, 15, 43, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(6px);
   z-index: 10;
 }
@@ -187,9 +189,9 @@ main {
 
 .callout {
   color: var(--text);
-  background: rgba(79, 195, 247, 0.1);
-  border: 1px solid rgba(79, 195, 247, 0.3);
-  border-left: 3px solid var(--accent-2);
+  background: rgba(217, 105, 79, 0.08);
+  border: 1px solid rgba(217, 105, 79, 0.24);
+  border-left: 3px solid var(--accent);
   border-radius: 8px;
   padding: 14px 16px;
   max-width: 640px;
@@ -204,36 +206,67 @@ main {
 }
 
 .card {
+  --dom: var(--accent-2);
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.card-strip {
+  background: color-mix(in srgb, var(--dom) 10%, var(--bg));
+  border-bottom: 1px solid var(--border);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.dot.filled {
+  background: var(--dom);
 }
 
 .badge {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-weight: 700;
-  color: var(--accent-2);
-  background: rgba(79, 195, 247, 0.12);
-  border-radius: 999px;
-  padding: 4px 10px;
-  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+  color: var(--dom);
 }
 
 .card h3 {
   margin: 0 0 10px;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 
 .card p {
   margin: 0;
   color: var(--text-muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.55;
   flex: 1;
 }
@@ -266,13 +299,22 @@ main {
 
 .card-tap-area:hover,
 .card-tap-area:focus-visible {
-  background: rgba(79, 195, 247, 0.06);
+  background: rgba(59, 68, 81, 0.04);
 }
 
 .chevron {
   flex-shrink: 0;
   color: var(--text-muted);
   transition: transform 0.15s ease;
+}
+
+.status-open,
+.status-taken {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
 .status-open {
@@ -282,10 +324,7 @@ main {
 
 .status-taken {
   color: var(--text-muted);
-}
-
-.status-taken strong {
-  color: var(--text);
+  font-weight: 600;
 }
 
 .card .form-message {
@@ -313,7 +352,7 @@ main {
   height: 34px;
   border-radius: 50%;
   background: var(--accent-gradient);
-  color: #0b0f2b;
+  color: var(--on-accent);
   font-size: 0.75rem;
   font-weight: 700;
   display: flex;
@@ -333,7 +372,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #0e1330;
+  background: var(--bg-sunken);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 6px 10px;
@@ -352,7 +391,7 @@ main {
 }
 
 .leave-btn:hover {
-  background: rgba(248, 113, 113, 0.12);
+  background: rgba(193, 74, 58, 0.1);
 }
 
 .join-panel .claim-form {
@@ -366,12 +405,65 @@ main {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 24px 24px 24px 44px;
+  padding: 24px 24px 24px 24px;
   display: grid;
-  gap: 14px;
+  gap: 16px;
   max-width: 560px;
   font-size: 1rem;
   line-height: 1.5;
+  list-style: none;
+  counter-reset: prep;
+}
+
+.prep-list li {
+  counter-increment: prep;
+  position: relative;
+  padding-left: 42px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.prep-list li::before {
+  content: counter(prep);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--num-color, var(--accent));
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.prep-list li:nth-child(1) {
+  --num-color: #b5502f;
+}
+
+.prep-list li:nth-child(2) {
+  --num-color: #4d7358;
+}
+
+.prep-list li:nth-child(3) {
+  --num-color: #7a4a68;
+}
+
+.prep-list li:nth-child(4) {
+  --num-color: #1f6f6b;
+}
+
+.prep-list li:nth-child(5) {
+  --num-color: #8a5a1f;
+}
+
+.prep-list li:nth-child(6) {
+  --num-color: #3b4451;
 }
 
 form.claim-form {
@@ -399,7 +491,7 @@ form.claim-form select {
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  background: #0e1330;
+  background: var(--bg-sunken);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 10px 12px;
@@ -414,7 +506,7 @@ form.claim-form button {
   border: none;
   border-radius: 8px;
   padding: 12px 16px;
-  color: #0b0f2b;
+  color: var(--on-accent);
   font-weight: 700;
   cursor: pointer;
   font-size: 0.95rem;
@@ -432,12 +524,12 @@ form.claim-form button:disabled {
 }
 
 .form-message.error {
-  background: rgba(248, 113, 113, 0.12);
+  background: rgba(193, 74, 58, 0.1);
   color: var(--danger);
 }
 
 .form-message.success {
-  background: rgba(52, 211, 153, 0.12);
+  background: rgba(63, 125, 92, 0.1);
   color: var(--success);
 }
 

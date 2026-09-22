@@ -3,9 +3,9 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Building Agentic AI Systems — Workshop",
+  title: "Building Agentic AI Systems · Workshop",
   description:
-    "Vishnu Women's University · Department of AI — a one day workshop on building agentic AI systems.",
+    "Vishnu Women's University · Department of AI. A one day workshop on building agentic AI systems.",
 };
 
 export default function RootLayout({

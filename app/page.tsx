@@ -174,7 +174,12 @@ export default function ProjectsPage() {
               </div>
 
               <div className="card-body">
-                <h3>{project.name}</h3>
+                <div className="title-row">
+                  <span className="card-icon" aria-hidden="true">
+                    {project.icon}
+                  </span>
+                  <h3>{project.name}</h3>
+                </div>
                 <p>{project.workflow}</p>
 
                 {members.length > 0 ? (

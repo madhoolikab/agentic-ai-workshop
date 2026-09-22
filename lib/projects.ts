@@ -6,6 +6,7 @@ export type Project = {
   name: string;
   workflow: string;
   color: string;
+  icon: string;
 };
 
 export const projects: Project[] = [
@@ -16,6 +17,7 @@ export const projects: Project[] = [
     workflow:
       "Reads resume → analyzes job requirements → identifies gaps → creates learning plan → conducts mock interviews → tracks improvement",
     color: "#b5502f",
+    icon: "🎯",
   },
   {
     id: "campus-issue-resolution",
@@ -24,6 +26,7 @@ export const projects: Project[] = [
     workflow:
       "Receives complaints → categorizes them → assigns the right department → tracks resolution → escalates overdue issues",
     color: "#3b4451",
+    icon: "🏫",
   },
   {
     id: "farmer-decision-support",
@@ -32,6 +35,7 @@ export const projects: Project[] = [
     workflow:
       "Uses weather/crop/soil information → plans activities → monitors conditions → alerts farmers → updates recommendations",
     color: "#4d7358",
+    icon: "🌾",
   },
   {
     id: "hospital-appointment-coordination",
@@ -40,6 +44,7 @@ export const projects: Project[] = [
     workflow:
       "Finds department → checks doctor availability → schedules/reschedules → sends reminders → handles conflicts",
     color: "#7a4a68",
+    icon: "🏥",
   },
   {
     id: "autonomous-trip-planner",
@@ -48,6 +53,7 @@ export const projects: Project[] = [
     workflow:
       "Receives travel preferences → finds transport and stays → builds itinerary → checks budget and constraints → monitors changes → replans when needed",
     color: "#1f6f6b",
+    icon: "✈️",
   },
   {
     id: "content-creator-agent",
@@ -56,5 +62,6 @@ export const projects: Project[] = [
     workflow:
       "Receives content goal/topic → researches trends and audience interests → generates content ideas → creates script/caption → prepares visual/thumbnail brief → schedules publishing → analyzes performance → improves future content based on engagement",
     color: "#8a5a1f",
+    icon: "📱",
   },
 ];

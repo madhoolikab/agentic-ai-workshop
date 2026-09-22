@@ -168,39 +168,62 @@ export default function ProjectsPage() {
               <h3>{project.name}</h3>
               <p>{project.workflow}</p>
 
-              <div className="card-status">
-                {isFull ? (
-                  <span className="status-taken">
-                    <strong>Full</strong> ({members.length}/{TEAM_CAPACITY})
-                  </span>
-                ) : (
-                  <span className="status-open">
-                    Open — {members.length}/{TEAM_CAPACITY} joined
-                  </span>
-                )}
-              </div>
-
-              <div className="avatar-row">
-                {loading ? (
-                  <span style={{ color: "var(--text-muted)" }}>Loading…</span>
-                ) : members.length === 0 ? (
-                  <span style={{ color: "var(--text-muted)" }}>No one has joined yet.</span>
-                ) : (
-                  members.map((m) => (
-                    <button
-                      type="button"
-                      key={m.name}
-                      className="avatar"
-                      title={m.name}
-                      onClick={() =>
-                        setExpanded((exp) => ({ ...exp, [project.id]: !exp[project.id] }))
-                      }
+              {members.length > 0 ? (
+                <button
+                  type="button"
+                  className="card-tap-area"
+                  aria-expanded={isExpanded}
+                  onClick={() =>
+                    setExpanded((exp) => ({ ...exp, [project.id]: !exp[project.id] }))
+                  }
+                >
+                  <div className="card-status">
+                    {isFull ? (
+                      <span className="status-taken">
+                        <strong>Full</strong> ({members.length}/{TEAM_CAPACITY})
+                      </span>
+                    ) : (
+                      <span className="status-open">
+                        Open — {members.length}/{TEAM_CAPACITY} joined
+                      </span>
+                    )}
+                    <svg
+                      className="chevron"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
                     >
-                      {initials(m.name)}
-                    </button>
-                  ))
-                )}
-              </div>
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
+                  <div className="avatar-row">
+                    {members.map((m) => (
+                      <span key={m.name} className="avatar" title={m.name}>
+                        {initials(m.name)}
+                      </span>
+                    ))}
+                  </div>
+                </button>
+              ) : (
+                <>
+                  <div className="card-status">
+                    <span className="status-open">
+                      Open — {members.length}/{TEAM_CAPACITY} joined
+                    </span>
+                  </div>
+                  <div className="avatar-row">
+                    <span style={{ color: "var(--text-muted)" }}>
+                      {loading ? "Loading…" : "No one has joined yet."}
+                    </span>
+                  </div>
+                </>
+              )}
 
               {isExpanded && members.length > 0 && (
                 <ul className="member-list">

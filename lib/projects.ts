@@ -29,13 +29,13 @@ export const projects: Project[] = [
     icon: "🏫",
   },
   {
-    id: "farmer-decision-support",
-    domain: "Agriculture",
-    name: "Farmer Decision-Support",
+    id: "research-copilot",
+    domain: "Research",
+    name: "Research Co-Pilot",
     prompt:
-      "Farmers make constant decisions: what to plant, when to irrigate, which fertilizer, which pesticide actually works. How can you support that work?",
-    color: "#4d7358",
-    icon: "🌾",
+      "Research means digging through papers, summarizing findings, checking citations, and organizing notes, all by hand. It eats hours before the real thinking even starts. How could an agent take on the grunt work?",
+    color: "#3d5a80",
+    icon: "📚",
   },
   {
     id: "hospital-appointment-coordination",

@@ -3,7 +3,7 @@ export default function PrepQuestionsPage() {
     "What is the problem you're solving?",
     "Who are the target users?",
     "What are their pain points?",
-    "What do people do today, without this agent?",
+    "What do people do today, without this app?",
     "Whose time and effort are you saving by solving this problem, and how?",
   ];
 
@@ -16,13 +16,13 @@ export default function PrepQuestionsPage() {
       </p>
       <p className="page-subtitle">
         Your first step is to pick the problem you want to work on. Each team will have 5
-        people, and once you&apos;re in, spend real time together understanding the problem
+        people, and once you&apos;re in, spend time together understanding the problem
         before jumping into a solution. Think, discuss, debate, and use the questions below to
         guide you.
       </p>
       <p className="callout">
         <strong>
-          Be ready to present your thinking when we meet for the workshop on September 26,
+          Be ready to present your thought process when we meet for the workshop on September 26,
           2026.
         </strong>
       </p>

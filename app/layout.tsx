@@ -24,6 +24,7 @@ export default function RootLayout({
             <nav className="nav">
               <Link href="/">Projects &amp; Teams</Link>
               <Link href="/prep-questions">Prep Questions</Link>
+              <Link href="/setup">Setup</Link>
               <Link href="/poster">Poster</Link>
             </nav>
           </div>

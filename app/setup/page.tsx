@@ -115,7 +115,32 @@ const apiKeySteps = [
   </>,
 ];
 
+const tldrawSteps = [
+  <>
+    Open <Ext href="https://www.tldraw.com/">tldraw.com</Ext> in your browser. It works right away,
+    and you do not need to create an account.
+  </>,
+  <>
+    You will use it during the workshop to draw a <strong>flow diagram</strong> of your team&apos;s
+    problem. It should show the steps from the moment the problem starts to the moment it is
+    solved.
+  </>,
+  <>
+    Try it now so it feels familiar. Draw a few boxes, connect them with arrows, and add text
+    inside them.
+  </>,
+  <>
+    Decide as a team who will draw, so that everyone can share ideas while one person keeps the
+    diagram tidy.
+  </>,
+];
+
 const sections = [
+  {
+    title: "Open tldraw",
+    hint: "The whiteboard you will use to draw your problem's flow diagram",
+    steps: tldrawSteps,
+  },
   {
     title: "Set up Claude",
     hint: "Add the Grill Me skill to your claude.ai account",
@@ -143,7 +168,7 @@ export default function SetupPage() {
     <>
       <h1 className="page-title">System Setup</h1>
       <p className="page-subtitle">
-        Please finish these four setups before the workshop so we can spend our time building. It
+        Please finish these five setups before the workshop so we can spend our time building. It
         should take about twenty minutes in total.
       </p>
       <p className="callout">

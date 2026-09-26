@@ -90,6 +90,31 @@ const backgrounderSteps = [
   </>,
 ];
 
+const apiKeySteps = [
+  <>
+    Go to <Ext href="https://aistudio.google.com/api-keys">Google AI Studio</Ext> and sign in with
+    your Google account.
+  </>,
+  <>
+    If AI Studio asks you to accept its terms of service, read them and accept to continue.
+  </>,
+  <>
+    On the <strong>API keys</strong> page, click <strong>Create API key</strong>.
+  </>,
+  <>
+    If it asks you to choose a project, pick an existing one or create a new project, then
+    confirm.
+  </>,
+  <>
+    Copy the key and save it somewhere safe on your computer, such as a private note. You will
+    need it during the workshop.
+  </>,
+  <>
+    Keep the key private. Do not share it, and do not put it in your GitHub repository or in any
+    chat, because anyone who has it can use your account&apos;s quota.
+  </>,
+];
+
 const sections = [
   {
     title: "Set up Claude",
@@ -106,6 +131,11 @@ const sections = [
     hint: "Sign in with GitHub and give it access to your project repository",
     steps: backgrounderSteps,
   },
+  {
+    title: "Get an LLM API key",
+    hint: "Create a Gemini API key in Google AI Studio",
+    steps: apiKeySteps,
+  },
 ];
 
 export default function SetupPage() {
@@ -113,7 +143,7 @@ export default function SetupPage() {
     <>
       <h1 className="page-title">System Setup</h1>
       <p className="page-subtitle">
-        Please finish these three setups before the workshop so we can spend our time building. It
+        Please finish these four setups before the workshop so we can spend our time building. It
         should take about twenty minutes in total.
       </p>
       <p className="callout">
